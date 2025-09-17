@@ -25,7 +25,11 @@ python-refactor-playground/
 ├── README.md                    # This file
 ├── ESTRUCTURA.md                # Project structure documentation
 ├── EXERCISE_README.md           # Exercise documentation
-└── EXERCISE_SCRIPT.md           # Step-by-step guide
+├── EXERCISE_SCRIPT.md           # Step-by-step guide (Linux/macOS)
+├── EXERCISE_SCRIPT_WINDOWS.md   # Step-by-step guide (Windows)
+├── run.bat                      # Windows batch runner
+├── run.ps1                      # Windows PowerShell runner
+└── setup_windows.bat            # Windows setup script
 ```
 
 ## Features
@@ -40,6 +44,53 @@ python-refactor-playground/
 
 ## Quick Start
 
+### Windows Users
+1. **Install dependencies:**
+```cmd
+run.bat install
+```
+*Or with PowerShell:*
+```powershell
+.\run.ps1 install
+```
+
+2. **Run the application:**
+```cmd
+run.bat run
+```
+*Or with PowerShell:*
+```powershell
+.\run.ps1 run
+```
+
+3. **Run tests:**
+```cmd
+run.bat test
+```
+*Or with PowerShell:*
+```powershell
+.\run.ps1 test
+```
+
+4. **Analyze code quality:**
+```cmd
+run.bat analyze
+```
+*Or with PowerShell:*
+```powershell
+.\run.ps1 analyze
+```
+
+5. **Auto-fix code issues:**
+```cmd
+run.bat fix
+```
+*Or with PowerShell:*
+```powershell
+.\run.ps1 fix
+```
+
+### Linux/macOS Users
 1. **Install dependencies:**
 ```bash
 pip install -r requirements.txt
@@ -78,6 +129,26 @@ python tools/auto_code_fixer_libraries_only.py
 
 ## Development Setup
 
+### Windows Users
+For Windows, use the automated setup script:
+
+```cmd
+setup_windows.bat
+```
+
+Or manually install dependencies:
+
+```cmd
+pip install -e .
+```
+
+Or install with development dependencies:
+
+```cmd
+pip install -e ".[dev]"
+```
+
+### Linux/macOS Users
 For development, install the package in editable mode:
 
 ```bash
@@ -116,7 +187,37 @@ This project intentionally contains various code quality issues for educational 
 
 ## Available Commands
 
-### Using Make (Recommended)
+### Windows Users
+
+#### Using Batch Files (Command Prompt)
+```cmd
+run.bat help          # Show all available commands
+run.bat test          # Run tests
+run.bat test-coverage # Run tests with coverage
+run.bat lint          # Run linting checks
+run.bat format        # Format code
+run.bat run           # Run the application
+run.bat analyze       # Run code quality analysis
+run.bat fix           # Auto-fix code issues
+run.bat clean         # Clean temporary files
+```
+
+#### Using PowerShell (Recommended)
+```powershell
+.\run.ps1 help          # Show all available commands
+.\run.ps1 test          # Run tests
+.\run.ps1 test-coverage # Run tests with coverage
+.\run.ps1 lint          # Run linting checks
+.\run.ps1 format        # Format code
+.\run.ps1 run           # Run the application
+.\run.ps1 analyze       # Run code quality analysis
+.\run.ps1 fix           # Auto-fix code issues
+.\run.ps1 clean         # Clean temporary files
+```
+
+### Linux/macOS Users
+
+#### Using Make (Recommended)
 ```bash
 make help          # Show all available commands
 make test          # Run tests
@@ -129,7 +230,7 @@ make fix           # Auto-fix code issues
 make clean         # Clean temporary files
 ```
 
-### Direct Commands
+### Direct Commands (All Platforms)
 - **`python main.py`** - Run the main application
 - **`pytest`** - Run all tests (recommended)
 - **`python -m unittest discover`** - Run tests with unittest
@@ -188,6 +289,30 @@ Try these refactoring exercises:
 - **pyupgrade**: Python syntax modernization
 - **autoflake**: Code cleanup
 - **vulture**: Dead code detection
+
+## Windows-Specific Notes
+
+### PowerShell Execution Policy
+If you encounter execution policy errors with PowerShell scripts:
+```powershell
+# Check current policy
+Get-ExecutionPolicy
+
+# Set policy for current user (if needed)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+### File Paths
+- Windows uses backslashes (`\`) in file paths
+- Use quotes around paths with spaces: `"C:\Program Files\Python\python.exe"`
+
+### Environment Variables
+- Ensure Python is in your `PATH` environment variable
+- Check with: `echo %PATH%` (CMD) or `$env:PATH` (PowerShell)
+
+### Exercise Scripts
+- **Linux/macOS**: Use `EXERCISE_SCRIPT.md`
+- **Windows**: Use `EXERCISE_SCRIPT_WINDOWS.md`
 
 ## Contributing
 
